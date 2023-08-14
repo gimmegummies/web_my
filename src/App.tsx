@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -10,10 +10,6 @@ import CheckYourEmail from "./pages/auth/Signup/CheckYourEmail";
 import ConfirmEmail from "./pages/auth/Signup/ConfirmEmail";
 import { AuthContext } from "./pages/auth/AuthContext/AuthContext";
 import WelcomeForm from "./components/WelcomeForm";
-
-interface LoginProps {
-  onFormSwitch: (form: "login" | "signup") => void;
-}
 
 function App() {
   // here is a function that will set username in the AuthContext and you can use it in any component
@@ -28,7 +24,7 @@ function App() {
       // console.log(username);
       setUsername(loggedInUsername);
     }
-  }, []);
+  }, [setUsername]);
 
   return (
     <Router>

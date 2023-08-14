@@ -20,7 +20,7 @@ export default function Header({ user }: { user: string | null }) {
 
         {user ? (
           <li>
-            <a href="/login" onClick={logout}>
+            <a href="/" onClick={logout}>
               Logout{" "}
             </a>
           </li>
