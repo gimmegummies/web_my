@@ -3,9 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext/AuthContext";
 import authService from "../../../services/auth/auth.service.tsx";
 import { localStorageService } from "../../../services/local-storage/local-storage.ts";
-import styles from "./Login.module.scss";
+// import styles from "./Login.module.scss";
+import "../../../App.css";
 
-export default function Login() {
+interface LoginProps {
+  onFormSwitch: (form: "login" | "signup") => void;
+}
+
+export default function Login({ onFormSwitch }: LoginProps) {
   const { setUsername } = useContext(AuthContext);
 
   const [formState, setFormState] = useState({
@@ -46,37 +51,38 @@ export default function Login() {
   };
 
   return (
-    <div className={styles.auth_form_wrapper}>
+    <div className="auth_form_wrapper">
       <form onSubmit={onSubmit}>
         <h3>Login</h3>
-        <div className={styles.auth_form_input_container}>
-          <label htmlFor="user">
-            user name
-            <input
-              type="text"
-              placeholder="user name / email"
-              required
-              autoComplete="off"
-              id="user"
-              value={formState.username}
-              onChange={(e) => onChange(e, "username")}
-            />
-          </label>
-          <label htmlFor="password">
-            password
-            <input
-              type="password"
-              placeholder="********"
-              required
-              autoComplete="off"
-              id="password"
-              value={formState.password}
-              onChange={(e) => onChange(e, "password")}
-            />
-          </label>
-        </div>
+        <label htmlFor="user">
+          user name
+          <input
+            type="text"
+            placeholder="user name / email"
+            required
+            autoComplete="off"
+            id="user"
+            value={formState.username}
+            onChange={(e) => onChange(e, "username")}
+          />
+        </label>
+        <label htmlFor="password">
+          password
+          <input
+            type="password"
+            placeholder="********"
+            required
+            autoComplete="off"
+            id="password"
+            value={formState.password}
+            onChange={(e) => onChange(e, "password")}
+          />
+        </label>
         <button type="submit">Log in</button>
       </form>
+      <button className="linkBtn" onClick={() => onFormSwitch("signup")}>
+        Don't have an account? Sign up
+      </button>
     </div>
   );
 }

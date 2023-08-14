@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../../services/auth/auth.service";
-import styles from "../Login/Login.module.css";
+import "../../../App.css";
 
-export default function Signup() {
+interface SignupProps {
+  onFormSwitch: (form: "login" | "signup") => void;
+}
+
+export default function Signup({ onFormSwitch }: SignupProps) {
   const [formState, setFormState] = useState({
     username: "",
     email: "",
@@ -51,43 +55,44 @@ export default function Signup() {
   };
 
   return (
-    <div className={styles.auth_form_wrapper}>
+    <div className="auth_form_wrapper">
       <form onSubmit={handleSignup}>
         <h3>Sign up</h3>
-        <div className={styles.auth_form_input_container}>
-          <label htmlFor="user">user name</label>
-          <input
-            type="text"
-            placeholder="user name"
-            required
-            autoComplete="off"
-            id="user"
-            value={formState.username}
-            onChange={(e) => onChange(e, "username")}
-          />
-          <label htmlFor="email">email</label>
-          <input
-            type="email"
-            placeholder="user@gmail.com"
-            required
-            autoComplete="off"
-            id="email"
-            value={formState.email}
-            onChange={(e) => onChange(e, "email")}
-          />
-          <label htmlFor="password">password</label>
-          <input
-            type="password"
-            placeholder="********"
-            required
-            autoComplete="off"
-            id="password"
-            value={formState.password}
-            onChange={(e) => onChange(e, "password")}
-          />
-        </div>
+        <label htmlFor="user">user name</label>
+        <input
+          type="text"
+          placeholder="user name"
+          required
+          autoComplete="off"
+          id="user"
+          value={formState.username}
+          onChange={(e) => onChange(e, "username")}
+        />
+        <label htmlFor="email">email</label>
+        <input
+          type="email"
+          placeholder="user@gmail.com"
+          required
+          autoComplete="off"
+          id="email"
+          value={formState.email}
+          onChange={(e) => onChange(e, "email")}
+        />
+        <label htmlFor="password">password</label>
+        <input
+          type="password"
+          placeholder="********"
+          required
+          autoComplete="off"
+          id="password"
+          value={formState.password}
+          onChange={(e) => onChange(e, "password")}
+        />
         <button type="submit">Sign up</button>
       </form>
+      <button className="linkBtn" onClick={() => onFormSwitch("login")}>
+        Already have an account? Login here
+      </button>
     </div>
   );
 }

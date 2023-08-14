@@ -1,4 +1,5 @@
 import React from "react";
+import "./Home.css";
 // import { testServerURL } from "../apiUrls/apiUrls";
 
 export default function Home({ username }: { username: string | null }) {
