@@ -55,44 +55,46 @@ export default function Signup({ onFormSwitch }: SignupProps) {
   };
 
   return (
-    <div className="auth_form_wrapper">
-      <form onSubmit={handleSignup}>
-        <h3>Sign up</h3>
-        <label htmlFor="user">user name</label>
-        <input
-          type="text"
-          placeholder="user name"
-          required
-          autoComplete="off"
-          id="user"
-          value={formState.username}
-          onChange={(e) => onChange(e, "username")}
-        />
-        <label htmlFor="email">email</label>
-        <input
-          type="email"
-          placeholder="user@gmail.com"
-          required
-          autoComplete="off"
-          id="email"
-          value={formState.email}
-          onChange={(e) => onChange(e, "email")}
-        />
-        <label htmlFor="password">password</label>
-        <input
-          type="password"
-          placeholder="********"
-          required
-          autoComplete="off"
-          id="password"
-          value={formState.password}
-          onChange={(e) => onChange(e, "password")}
-        />
-        <button type="submit">Sign up</button>
-      </form>
-      <button className="linkBtn" onClick={() => onFormSwitch("login")}>
-        Already have an account? Login here
-      </button>
+    <div className="auth_wrapper">
+      <div className="auth_form_wrapper">
+        <form onSubmit={handleSignup}>
+          <h3>Sign up</h3>
+          <label htmlFor="user">user name</label>
+          <input
+            type="text"
+            placeholder="user name"
+            required
+            autoComplete="off"
+            id="user"
+            value={formState.username}
+            onChange={(e) => onChange(e, "username")}
+          />
+          <label htmlFor="email">email</label>
+          <input
+            type="email"
+            placeholder="user@gmail.com"
+            required
+            autoComplete="off"
+            id="email"
+            value={formState.email}
+            onChange={(e) => onChange(e, "email")}
+          />
+          <label htmlFor="password">password</label>
+          <input
+            type="password"
+            placeholder="********"
+            required
+            autoComplete="off"
+            id="password"
+            value={formState.password}
+            onChange={(e) => onChange(e, "password")}
+          />
+          <button type="submit">Sign up</button>
+        </form>
+        <button className="linkBtn" onClick={() => onFormSwitch("login")}>
+          Already have an account? Login here
+        </button>
+      </div>
     </div>
   );
 }

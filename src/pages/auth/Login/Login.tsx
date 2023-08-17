@@ -51,38 +51,43 @@ export default function Login({ onFormSwitch }: LoginProps) {
   };
 
   return (
-    <div className="auth_form_wrapper">
-      <form onSubmit={onSubmit}>
-        <h3>Login</h3>
-        <label htmlFor="user">
-          user name
-          <input
-            type="text"
-            placeholder="user name / email"
-            required
-            autoComplete="off"
-            id="user"
-            value={formState.username}
-            onChange={(e) => onChange(e, "username")}
-          />
-        </label>
-        <label htmlFor="password">
-          password
-          <input
-            type="password"
-            placeholder="********"
-            required
-            autoComplete="off"
-            id="password"
-            value={formState.password}
-            onChange={(e) => onChange(e, "password")}
-          />
-        </label>
-        <button type="submit">Log in</button>
-      </form>
-      <button className="linkBtn" onClick={() => onFormSwitch("signup")}>
-        Don't have an account? Sign up
-      </button>
+    <div className="auth_wrapper">
+      <div className="auth_form_wrapper">
+        <form onSubmit={onSubmit}>
+          <h3>Login</h3>
+          <label htmlFor="user">
+            user name
+            <input
+              type="text"
+              placeholder="user name / email"
+              required
+              autoComplete="off"
+              id="user"
+              value={formState.username}
+              onChange={(e) => onChange(e, "username")}
+            />
+          </label>
+          <label htmlFor="password">
+            password
+            <input
+              type="password"
+              placeholder="********"
+              required
+              autoComplete="off"
+              id="password"
+              value={formState.password}
+              onChange={(e) => onChange(e, "password")}
+            />
+          </label>
+          <a href="#" className="forget_psw_link">
+            Forgot password?
+          </a>
+          <button type="submit">Log in</button>
+        </form>
+        <button className="linkBtn" onClick={() => onFormSwitch("signup")}>
+          Don't have an account? Sign up
+        </button>
+      </div>
     </div>
   );
 }
