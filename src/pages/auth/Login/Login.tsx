@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthContext/AuthContext";
 import authService from "../../../services/auth/auth.service.tsx";
 import { localStorageService } from "../../../services/local-storage/local-storage.ts";
@@ -53,8 +53,8 @@ export default function Login({ onFormSwitch }: LoginProps) {
   return (
     <div className="auth_wrapper">
       <div className="auth_form_wrapper">
+        <h3>Login</h3>
         <form onSubmit={onSubmit}>
-          <h3>Login</h3>
           <label htmlFor="user">
             user name
             <input
@@ -79,9 +79,11 @@ export default function Login({ onFormSwitch }: LoginProps) {
               onChange={(e) => onChange(e, "password")}
             />
           </label>
-          <a href="#" className="forget_psw_link">
+
+          <NavLink className={"forget_psw_link"} to={"/forgotpassword"}>
             Forgot password?
-          </a>
+          </NavLink>
+
           <button type="submit">Log in</button>
         </form>
         <button className="linkBtn" onClick={() => onFormSwitch("signup")}>

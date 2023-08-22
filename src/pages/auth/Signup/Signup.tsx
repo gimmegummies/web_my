@@ -57,8 +57,8 @@ export default function Signup({ onFormSwitch }: SignupProps) {
   return (
     <div className="auth_wrapper">
       <div className="auth_form_wrapper">
+        <h3>Sign up</h3>
         <form onSubmit={handleSignup}>
-          <h3>Sign up</h3>
           <label htmlFor="user">user name</label>
           <input
             type="text"

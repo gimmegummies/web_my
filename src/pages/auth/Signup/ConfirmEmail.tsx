@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import authService from "../../../services/auth/auth.service";
+import "../../../App.css";
 
 export default function ConfirmEmail() {
   const [isVerified, setIsVerified] = useState(false);
@@ -33,7 +34,10 @@ export default function ConfirmEmail() {
   } else {
     content = (
       <div>
-        Email verified. Please <Link to="/login">sign in</Link>
+        <h3>Email is verified.</h3>
+        <p className="confirm-email_par">
+          Please <Link to="/login">sign in</Link>
+        </p>
       </div>
     );
   }
